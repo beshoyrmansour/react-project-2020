@@ -1,16 +1,11 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
-import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Tooltip from "@material-ui/core/Tooltip";
 import moment from "moment";
-import * as actionTypes from "../redux/actionTypes";
-
-import appContext from "../contexts/appContext";
 
 const ListItemComp = ({ item, onDelete, onToggleComplete }) => {
   return (

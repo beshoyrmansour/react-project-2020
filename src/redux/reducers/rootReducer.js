@@ -1,121 +1,8 @@
 import * as actionTypes from "../actionTypes";
 
 export const initialState = {
-  Lists: [
-    {
-      _id: Date.now()-22,
-      created_at: Date.now(),
-      title: "Projects",
-      items: [
-        {
-          _id: Date.now(),
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 1",
-        },
-        {
-          _id: Date.now() + 1,
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 2",
-        },
-        {
-          _id: Date.now() + 2,
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 3",
-        },
-      ],
-    },
-    {
-      _id: Date.now()-23,
-      created_at: Date.now(),
-      title: "Projects",
-      items: [
-        {
-          _id: Date.now(),
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 1",
-        },
-        {
-          _id: Date.now() + 1,
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 2",
-        },
-        {
-          _id: Date.now() + 2,
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 3",
-        },
-        {
-          _id: Date.now() + 3,
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 3",
-        },
-        {
-          _id: Date.now() + 4,
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 3",
-        },
-      ],
-    },
-    {
-      _id: Date.now()-24,
-      created_at: Date.now(),
-      title: "Projects",
-      items: [
-        {
-          _id: Date.now(),
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 1",
-        },
-        {
-          _id: Date.now() + 1,
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 2",
-        },
-
-      ],
-    },
-    {
-      _id: Date.now()-25,
-      created_at: Date.now(),
-      title: "Projects",
-      items: [
-        {
-          _id: Date.now(),
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 1",
-        },
-        {
-          _id: Date.now() + 1,
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 2",
-        },
-        {
-          _id: Date.now() + 2,
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 3",
-        },
-        {
-          _id: Date.now() + 3,
-          created_at: Date.now(),
-          completed: false,
-          content: "Hello World 3",
-        },
-      ],
-    },
-  ],
+  Lists: [],
+  selectedtheme: "light",
 };
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -183,6 +70,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ),
       };
 
+    case actionTypes.TOGGLE_THEME:
+      document.body.style.backgroundColor =
+        state.selectedtheme === "light" ? "#1e1e1e" : "#f9f9f9";
+      return {
+        ...state,
+        selectedtheme: state.selectedtheme === "light" ? "dark" : "light",
+      };
     default:
       return { ...state };
   }
