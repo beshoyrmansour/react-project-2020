@@ -4,11 +4,10 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import * as actionTypes from "../redux/actionTypes";
 import appContext from "../contexts/appContext";
-import { useTheme } from "@material-ui/core";
+import { THEME_TYPES } from "../constants";
 
 const NavBar = () => {
-  const [dispatch, state] = useContext(appContext);
-  const theme = useTheme();
+  const { dispatch, state } = useContext(appContext);
 
   return (
     <>
@@ -20,7 +19,9 @@ const NavBar = () => {
           <Grid item>
             <Typography
               color={
-                state.selectedtheme === "dark" ? "textPrimary" : "textSecondary"
+                state.selectedtheme === THEME_TYPES.dark
+                  ? "textPrimary"
+                  : "textSecondary"
               }
             >
               Dark
@@ -29,23 +30,15 @@ const NavBar = () => {
           <Grid item>
             <Switch
               color="primary"
-              checked={state.selectedtheme === "light"}
+              checked={state.selectedtheme === THEME_TYPES.light}
               inputProps={{ "aria-label": "primary checkbox" }}
-              onChange={() =>
-                dispatch({
-                  type: actionTypes.TOGGLE_THEME,
-                  payload:
-                    state.selectedtheme === "light"
-                      ? theme.palette.grey[900]
-                      : theme.palette.grey[100],
-                })
-              }
+              onChange={() => dispatch({ type: actionTypes.TOGGLE_THEME })}
             />
           </Grid>
           <Grid item>
             <Typography
               color={
-                state.selectedtheme === "light"
+                state.selectedtheme === THEME_TYPES.light
                   ? "textPrimary"
                   : "textSecondary"
               }

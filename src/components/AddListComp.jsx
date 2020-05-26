@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AddListComp = ({ isOpen, setIsOpen }) => {
   const classes = useStyles();
-  const [dispatch] = useContext(appContext);
+  const {dispatch} = useContext(appContext);
   const [title, setTitle] = useState("");
   const [newItem, setNewItem] = useState("");
   const [items, setItems] = useState([]);

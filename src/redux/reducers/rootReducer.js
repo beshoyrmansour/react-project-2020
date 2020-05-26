@@ -1,8 +1,9 @@
 import * as actionTypes from "../actionTypes";
+import { THEME_TYPES } from "../../constants";
 
 export const initialState = {
   Lists: [],
-  selectedtheme: "light",
+  selectedtheme: THEME_TYPES.light,
 };
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -77,7 +78,10 @@ const rootReducer = (state = initialState, { type, payload }) => {
       // document.body.style.backgroundColor = payload;
       return {
         ...state,
-        selectedtheme: state.selectedtheme === "light" ? "dark" : "light",
+        selectedtheme:
+          state.selectedtheme === THEME_TYPES.light
+            ? THEME_TYPES.dark
+            : THEME_TYPES.light,
       };
     default:
       return { ...state };

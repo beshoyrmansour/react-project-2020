@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 const ListComp = ({ list }) => {
   const theme = useTheme();
 
-  const [dispatch] = useContext(appContext);
+  const {dispatch} = useContext(appContext);
   const [newItem, setNewItem] = useState("");
   const classes = useStyles();
 

@@ -26,7 +26,7 @@ function App() {
   }, [state]);
 
   return (
-    <appContext.Provider value={[dispatch, state]}>
+    <appContext.Provider value={{ dispatch, state }}>
       {/* state.selectedtheme */}
       <ThemeProvider
         theme={createMuiTheme({

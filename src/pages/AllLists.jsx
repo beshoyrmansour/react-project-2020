@@ -12,7 +12,7 @@ import NavBar from "../components/NavBar";
 import appContext from "../contexts/appContext";
 
 const AllLists = () => {
-  const [state] = useContext(appContext);
+  const { state } = useContext(appContext);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -40,7 +40,7 @@ const AllLists = () => {
             minHeight: 600,
           }}
         >
-          {state.Lists && state.Lists.length > 0 ? (
+          {state.Lists.length > 0 ? (
             state.Lists.map((list) => (
               <Box my={2} mx={1} maxWidth={350}>
                 <ListComp list={list} key={list._id} />
