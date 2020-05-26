@@ -3,7 +3,7 @@ import { THEME_TYPES } from "../../constants";
 
 export const initialState = {
   Lists: [],
-  selectedtheme: THEME_TYPES.light,
+  selectedtheme: THEME_TYPES.dark,
 };
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -14,8 +14,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return { ...state, Lists: [...state.Lists, payload] };
 
     case actionTypes.DELETE_LIST:
-      console.log("DELETE_LIST");
-
       return {
         ...state,
         Lists: state.Lists.filter((list) => list._id !== payload),

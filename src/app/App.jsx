@@ -8,15 +8,17 @@ import * as actionTypes from "../redux/actionTypes";
 import appContext from "../contexts/appContext";
 import AllLists from "../pages/AllLists";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import { THEME_TYPES } from "../constants";
 
 function App() {
   const [state, dispatch] = useReducer(rootReducer, initialState);
 
   useEffect(() => {
-    dispatch({
-      type: actionTypes.RESET,
-      payload: JSON.parse(localStorage.getItem("data")),
-    });
+    if (localStorage.getItem("data"))
+      dispatch({
+        type: actionTypes.RESET,
+        payload: JSON.parse(localStorage.getItem("data")),
+      });
     return () => {};
   }, []);
 
@@ -27,12 +29,21 @@ function App() {
 
   return (
     <appContext.Provider value={{ dispatch, state }}>
-      {/* state.selectedtheme */}
       <ThemeProvider
         theme={createMuiTheme({
           palette: {
-            primary: { main: "#3f51b5" },
-            secondary: { main: "#f50057" },
+            primary: {
+              main:
+                state.selectedtheme === THEME_TYPES.light
+                  ? "#29b6f6"
+                  : "#ec407a",
+            },
+            secondary: {
+              main:
+                state.selectedtheme === THEME_TYPES.light
+                  ? "#ef5350"
+                  : "#26a69a",
+            },
             type: state.selectedtheme,
           },
         })}

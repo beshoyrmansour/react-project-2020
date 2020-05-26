@@ -40,7 +40,7 @@ const AllLists = () => {
             minHeight: 600,
           }}
         >
-          {state.Lists.length > 0 ? (
+          {state && state.Lists && state.Lists.length > 0 ? (
             state.Lists.map((list) => (
               <Box my={2} mx={1} maxWidth={350}>
                 <ListComp list={list} key={list._id} />
@@ -51,7 +51,6 @@ const AllLists = () => {
               You Don't have any Todo lists
             </Typography>
           )}
-          {console.log("state", state)}
         </Box>
         <Box component="div" position="fixed" bottom={15}>
           <Fab

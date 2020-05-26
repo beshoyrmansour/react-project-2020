@@ -59,7 +59,6 @@ const AddListComp = ({ isOpen, setIsOpen }) => {
 
   const handleSubmitNewList = (e) => {
     e.preventDefault();
-    console.log("handleSubmitNewList");
     dispatch({
       type: actionTypes.ADD_LIST,
       payload: {
