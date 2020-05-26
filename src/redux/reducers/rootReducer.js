@@ -6,6 +6,9 @@ export const initialState = {
 };
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case actionTypes.RESET:
+      return { ...payload };
+
     case actionTypes.ADD_LIST:
       return { ...state, Lists: [...state.Lists, payload] };
 
@@ -71,8 +74,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
 
     case actionTypes.TOGGLE_THEME:
-      document.body.style.backgroundColor =
-        state.selectedtheme === "light" ? "#1e1e1e" : "#f9f9f9";
+      // document.body.style.backgroundColor = payload;
       return {
         ...state,
         selectedtheme: state.selectedtheme === "light" ? "dark" : "light",

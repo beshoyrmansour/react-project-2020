@@ -6,3 +6,4 @@ export const DELETE_LIST_ITEM = "DELETE_LIST_ITEM";
 export const TOGGLE_LIST_ITEM = "TOGGLE_LIST_ITEM";
 
 export const TOGGLE_THEME = "TOGGLE_THEME";
+export const RESET = "RESET";

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -6,14 +6,18 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Tooltip from "@material-ui/core/Tooltip";
 import moment from "moment";
+import { useTheme } from "@material-ui/core";
 
 const ListItemComp = ({ item, onDelete, onToggleComplete }) => {
+  const theme = useTheme();
+
   return (
     <>
       <ListItem
         key={item._id}
         // role={undefined}
         // dense
+        color={theme.palette.common.black}
         button
         onClick={() => onToggleComplete && onToggleComplete(item._id)}
       >
@@ -48,4 +52,4 @@ const ListItemComp = ({ item, onDelete, onToggleComplete }) => {
   );
 };
 
-export default ListItemComp;
+export default memo(ListItemComp);

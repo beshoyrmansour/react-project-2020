@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, memo } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -12,6 +12,7 @@ import AddIcon from "@material-ui/icons/Add";
 import moment from "moment";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Box from "@material-ui/core/Box";
+import { useTheme } from "@material-ui/core/styles";
 
 import * as actionTypes from "../redux/actionTypes";
 import ListItemComp from "./ListItemComp";
@@ -33,7 +34,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ListComp = ({ list }) => {
-  const dispatch = useContext(appContext);
+  const theme = useTheme();
+
+  const [dispatch] = useContext(appContext);
   const [newItem, setNewItem] = useState("");
   const classes = useStyles();
 
@@ -76,7 +79,11 @@ const ListComp = ({ list }) => {
   return (
     <>
       <Grid item>
-        <Paper style={{ padding: 15 }} elevation={3}>
+        <Paper
+          style={{ padding: 15 }}
+          elevation={3}
+          color={theme.palette.common.black}
+        >
           <form autoComplete="" onSubmit={handleAddNewItem}>
             <Typography variant="h4" component="h4">
               <Box display="flex" justifyContent="space-between">
@@ -134,4 +141,4 @@ const ListComp = ({ list }) => {
   );
 };
 
-export default ListComp;
+export default memo(ListComp);

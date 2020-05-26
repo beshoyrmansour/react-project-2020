@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, memo } from "react";
 import Box from "@material-ui/core/Box";
 import * as actionTypes from "../redux/actionTypes";
 import List from "@material-ui/core/List";
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AddListComp = ({ isOpen, setIsOpen }) => {
   const classes = useStyles();
-  const dispatch = useContext(appContext);
+  const [dispatch] = useContext(appContext);
   const [title, setTitle] = useState("");
   const [newItem, setNewItem] = useState("");
   const [items, setItems] = useState([]);
@@ -150,4 +150,4 @@ const AddListComp = ({ isOpen, setIsOpen }) => {
   );
 };
 
-export default AddListComp;
+export default memo(AddListComp);
